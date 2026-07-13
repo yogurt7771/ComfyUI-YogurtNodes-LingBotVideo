@@ -1,0 +1,7 @@
+if __package__:
+    from .yogurt_lingbot_video import NODE_CLASS_MAPPINGS, NODE_DISPLAY_NAME_MAPPINGS
+else:
+    NODE_CLASS_MAPPINGS = {}
+    NODE_DISPLAY_NAME_MAPPINGS = {}
+
+__all__ = ["NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS"]

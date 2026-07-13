@@ -1,0 +1,10 @@
+[project]
+name = "comfyui-yogurtnodes-lingbotvideo"
+description = "ComfyUI custom nodes for local LingBot Video inference."
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.comfy]
+DisplayName = "ComfyUI-YogurtNodes-LingBotVideo"
+Icon = ""
