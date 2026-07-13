@@ -5,4 +5,4 @@ json_repair>=0.30
 peft>=0.19.1
 safetensors>=0.4.5
 scipy>=1.11
-transformers>=4.57.0,<5
+transformers>=4.57.0
