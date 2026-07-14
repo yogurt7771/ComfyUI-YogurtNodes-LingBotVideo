@@ -1,0 +1,158 @@
+{
+  "last_node_id": 4,
+  "last_link_id": 3,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [40, 330],
+      "size": [340, 310],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [2],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "example.png",
+        "image"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "YogurtLingBotVideoModelLoader",
+      "pos": [40, 40],
+      "size": [380, 270],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "pipeline",
+          "type": "YOGURT_LINGBOT_VIDEO_PIPELINE",
+          "links": [1],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "YogurtLingBotVideoModelLoader"
+      },
+      "widgets_values": [
+        "Robbyant--lingbot-video-dense-1.3b",
+        "ti2v",
+        "auto",
+        true,
+        12,
+        false
+      ]
+    },
+    {
+      "id": 3,
+      "type": "YogurtLingBotVideoGenerate",
+      "pos": [520, 130],
+      "size": [450, 400],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pipeline",
+          "type": "YOGURT_LINGBOT_VIDEO_PIPELINE",
+          "link": 1
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "frames",
+          "type": "IMAGE",
+          "links": [3],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "YogurtLingBotVideoGenerate"
+      },
+      "widgets_values": [
+        "The subject turns slowly toward the camera while a soft breeze creates natural secondary motion. The camera makes a gentle push-in, preserving the original identity, composition, and environment.",
+        "",
+        832,
+        480,
+        81,
+        40,
+        3.0,
+        3.0,
+        42,
+        "randomize"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "SaveWEBM",
+      "pos": [1070, 220],
+      "size": [340, 220],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveWEBM"
+      },
+      "widgets_values": [
+        "LingBotVideo/ti2v",
+        "vp9",
+        24.0,
+        32.0
+      ]
+    }
+  ],
+  "links": [
+    [1, 2, 0, 3, 0, "YOGURT_LINGBOT_VIDEO_PIPELINE"],
+    [2, 1, 0, 3, 1, "IMAGE"],
+    [3, 3, 0, 4, 0, "IMAGE"]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.85,
+      "offset": [90, 70]
+    },
+    "frontendVersion": "1.45.20"
+  },
+  "version": 0.4
+}
